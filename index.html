@@ -1,0 +1,36 @@
+<html>
+
+<head>
+
+    <title>get Geo localosation</title>
+</head>
+
+<body>
+    <form action="position.php">
+
+        <input type="text" name="x" id="x">
+        <input type="text" name="y" id=y>
+        <input type="submit">
+    </form>
+
+    <script>
+        navigator.geolocation.getCurrentPosition(position_geted,
+            null
+            ,
+            {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            }
+        );
+        function position_geted(position){
+            console.log("checking");
+            document.getElementById("x").value = position.coords.latitude;
+            document.getElementById("y").value = position.coords.longitude;
+            console.log(position.coords.accuracy);
+        }
+
+    </script>
+</body>
+
+</html>
